@@ -1,0 +1,35 @@
+# --------------------------
+# Configuration for docker
+# lang: name of programming language server like php, node...
+# version: version of programming language server
+# node_modules: If projet work with node (work only on dev for now)
+config:
+    lang: php
+    version: 7.3
+
+# --------------------------
+# Commands for deploy
+# prefix with docker: if the command line need to run with it
+commands:
+    dev:
+        - cp githooks/* www/sf_coaching/.git/hooks/
+        - docker:composer install
+        - docker:bin/console cache:clear --no-warmup --env=dev
+        - docker:bin/console cache:warmup --env=dev
+        - docker:bin/console doctrine:database:create --if-not-exists --env=dev
+        - docker:bin/console doctrine:migrations:migrate --query-time --no-interaction --env=dev
+        - docker:yarn
+        - docker:chgrp -Rh www-data ./
+        - docker:chown -Rh root:root crontab
+        - docker:chmod -Rf 777 var/log var/cache
+
+# --------------------------
+# configuration for database synchronisation
+database:
+    preprod:
+        name: sf_geo
+        host: 192.168.1.50
+        username: postgres
+        port: 5434
+        driver: postgres
+        version: 11

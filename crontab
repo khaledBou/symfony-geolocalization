@@ -1,0 +1,4 @@
+#m   h   dom mon dow user       command
+
+# Import des indicateurs KelQuartier
+#*    *   *   *   *   www-data   /var/www/sf4_geo/bin/console app:indicator:import 30 80 --env=prod >> /var/www/sf4_geo/var/log/commands/app.indicator.import.log

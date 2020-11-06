@@ -1,0 +1,3 @@
+parameters:
+  kel_quartier_pro_api_url: http://pro.kelquartier.com/proprietes-privees
+  kel_quartier_estimation_api_url: http://estimation.kelquartier.com/proprietes-privees

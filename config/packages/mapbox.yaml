@@ -1,0 +1,3 @@
+parameters:
+  mapbox_api_url: https://api.mapbox.com
+  mapbox_api_token: '%env(MAPBOX_API_TOKEN)%'
